@@ -1,0 +1,198 @@
+.section {
+  padding: 10rem 2rem;
+  background: var(--section-alt);
+  overflow: hidden;
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  opacity: 0.12;
+}
+
+[data-theme="light"] .section::before {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+  opacity: 0.35;
+}
+
+.inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+.subtitle {
+  margin: 1rem auto 0;
+  max-width: 40rem;
+  color: var(--text-muted-2);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.categoryTitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 1.75rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2.25rem;
+}
+
+@media (min-width: 900px) {
+  .categoryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+.categoryCard {
+  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 2rem 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    border-color 0.25s ease;
+}
+
+.categoryCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-muted);
+  box-shadow: 0 22px 45px -18px rgba(255, 77, 77, 0.14);
+}
+
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.25rem 1rem;
+  align-items: start;
+}
+
+.skillItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    background 0.25s ease;
+  cursor: default;
+  text-align: center;
+}
+
+.skillItem:hover {
+  background: color-mix(in srgb, var(--bg-elevated-hover) 65%, transparent);
+  border-color: var(--border-default);
+  transform: translateY(-4px);
+}
+
+.skillIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
+  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.35);
+}
+
+.skillIcon svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  /* keep icons crisp */
+  shape-rendering: geometricPrecision;
+}
+
+.skillIcon svg * {
+  vector-effect: non-scaling-stroke;
+}
+
+.skillIconDot {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* Label under icon */
+.skillItem > span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+/* Stagger children when Reveal is visible (data-visible from Reveal component) */
+[data-visible="true"] .skillItem {
+  opacity: 0;
+  animation: skillItemPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-visible="true"] .skillItem:nth-child(1) { animation-delay: 0.1s; }
+[data-visible="true"] .skillItem:nth-child(2) { animation-delay: 0.15s; }
+[data-visible="true"] .skillItem:nth-child(3) { animation-delay: 0.2s; }
+[data-visible="true"] .skillItem:nth-child(4) { animation-delay: 0.25s; }
+[data-visible="true"] .skillItem:nth-child(5) { animation-delay: 0.3s; }
+[data-visible="true"] .skillItem:nth-child(6) { animation-delay: 0.35s; }
+[data-visible="true"] .skillItem:nth-child(7) { animation-delay: 0.4s; }
+[data-visible="true"] .skillItem:nth-child(8) { animation-delay: 0.45s; }
+
+@keyframes skillFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skillItemPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

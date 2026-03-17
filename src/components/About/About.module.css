@@ -1,0 +1,112 @@
+.section {
+  padding: 10rem 2rem;
+}
+
+.inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .left {
+    align-items: flex-start;
+  }
+}
+
+.profileImage {
+  width: 350px;
+  height: 350px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 2px solid var(--accent-muted);
+  box-shadow: 0 20px 60px -20px rgba(255, 77, 77, 0.3);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profileImage:hover {
+  transform: translateY(-10px) scale(1.03);
+  border-color: rgba(255, 77, 77, 0.6);
+  box-shadow: 0 32px 64px -16px rgba(255, 77, 77, 0.4),
+    0 0 0 1px rgba(255, 77, 77, 0.1);
+}
+
+.resumeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  margin-top: 2rem;
+  background: var(--accent-muted-2);
+  border: 1px solid var(--accent-muted);
+  border-radius: 12px;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.resumeBtn:hover {
+  background: rgba(255, 77, 77, 0.2);
+  border-color: var(--accent);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px -8px rgba(255, 77, 77, 0.3);
+}
+
+.label {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+.titleMuted {
+  color: var(--text-muted-4);
+}
+
+.paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--text-muted-2);
+  line-height: 1.6;
+}
+
+.paragraphs p:last-child {
+  color: var(--text-muted-4);
+  font-size: 0.875rem;
+}
+

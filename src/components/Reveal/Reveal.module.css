@@ -1,0 +1,70 @@
+/* Base: hidden until visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variants */
+.revealUp {
+  opacity: 0;
+  transform: translateY(56px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealUp.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.revealLeft {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealLeft.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.revealRight {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealRight.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.revealScale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealScale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.revealFade {
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealFade.visible {
+  opacity: 1;
+}

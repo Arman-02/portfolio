@@ -1,0 +1,129 @@
+/* Theme variables - dark (default) */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: rgba(10, 10, 10, 0.8);
+  --bg-elevated: rgba(255, 255, 255, 0.02);
+  --bg-elevated-hover: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-muted: #e4e4e7;
+  --text-muted-2: #a1a1aa;
+  --text-muted-3: #71717a;
+  --text-muted-4: #52525b;
+  --accent: #ff4d4d;
+  --accent-secondary: #ff1e5a;
+  --accent-muted: rgba(255, 77, 77, 0.3);
+  --accent-muted-2: rgba(255, 77, 77, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(10, 10, 10, 0.8);
+  --hero-gradient-1: rgba(255, 77, 77, 0.08);
+  --hero-gradient-2: rgba(100, 200, 255, 0.04);
+  --section-alt: rgba(0, 0, 0, 0.5);
+  --scroll-progress: linear-gradient(90deg, #ff4d4d, #ff1e5a);
+  --tab-inactive: rgba(226, 226, 231, 0.65);
+  --form-bg: rgba(255, 255, 255, 0.03);
+  --form-border: rgba(255, 255, 255, 0.1);
+  --form-placeholder: rgba(255, 255, 255, 0.4);
+  --modal-backdrop: rgba(0, 0, 0, 0.9);
+  --modal-content-bg: white;
+  --pdf-close-color: white;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: rgba(248, 250, 252, 0.95);
+  --bg-elevated: rgba(255, 255, 255, 0.9);
+  --bg-elevated-hover: rgba(255, 255, 255, 1);
+  --text-primary: #0f172a;
+  --text-muted: #334155;
+  --text-muted-2: #475569;
+  --text-muted-3: #64748b;
+  --text-muted-4: #94a3b8;
+  --accent: #dc2626;
+  --accent-secondary: #e11d48;
+  --accent-muted: rgba(220, 38, 38, 0.25);
+  --accent-muted-2: rgba(220, 38, 38, 0.08);
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-default: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.12);
+  --nav-bg: rgba(248, 250, 252, 0.9);
+  --hero-gradient-1: rgba(220, 38, 38, 0.07);
+  --hero-gradient-2: rgba(59, 130, 246, 0.06);
+  --section-alt: rgba(241, 245, 249, 0.6);
+  --scroll-progress: linear-gradient(90deg, #dc2626, #e11d48);
+  --tab-inactive: rgba(15, 23, 42, 0.6);
+  --form-bg: rgba(15, 23, 42, 0.03);
+  --form-border: rgba(15, 23, 42, 0.1);
+  --form-placeholder: rgba(15, 23, 42, 0.45);
+  --modal-backdrop: rgba(15, 23, 42, 0.5);
+  --modal-content-bg: white;
+  --pdf-close-color: #0f172a;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.2s ease;
+}
+
+/* Dark: subtle grain */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Light mode: engaging gradient mesh background (after body so it overrides) */
+[data-theme="light"] body {
+  background: 
+    radial-gradient(ellipse 120% 80% at 20% 10%, rgba(255, 237, 213, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 60% at 85% 20%, rgba(219, 234, 254, 0.45) 0%, transparent 45%),
+    radial-gradient(ellipse 80% 50% at 50% 95%, rgba(254, 226, 226, 0.35) 0%, transparent 40%),
+    radial-gradient(ellipse 60% 40% at 70% 60%, rgba(224, 231, 255, 0.25) 0%, transparent 35%),
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+
+[data-theme="light"] body::before {
+  opacity: 0.015;
+}
+
+[data-theme="light"] body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.04) 1px, transparent 0);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.fontDisplay {
+  font-family: 'Syne', sans-serif;
+}
