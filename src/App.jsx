@@ -1,3 +1,5 @@
+import InteractiveShaderDemo from "./components/Demos/InteractiveShaderDemo"
+
 import { useEffect } from 'react'
 import { ThemeProvider } from './context/ThemeContext'
 import { PdfModalProvider } from './context/PdfModalContext'
@@ -37,6 +39,7 @@ function AppContent() {
       <Nav />
       <main>
         <Hero />
+        
         <About />
         <Experience />
         <Projects />

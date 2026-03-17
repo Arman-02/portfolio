@@ -8,6 +8,7 @@
   background: radial-gradient(ellipse at 50% 0%, var(--hero-gradient-1) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 80%, var(--hero-gradient-2) 0%, transparent 40%),
     var(--bg-primary);
+  overflow: hidden;
 }
 
 .floatShape {
@@ -15,6 +16,7 @@
   border-radius: 50%;
   filter: blur(80px);
   animation: float 8s ease-in-out infinite;
+  z-index: 1;
 }
 
 .floatShape1 {

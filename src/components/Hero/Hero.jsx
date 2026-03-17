@@ -1,8 +1,10 @@
 import styles from './Hero.module.css'
+import { HeroShaderBackground } from "./HeroShaderBackground"
 
 export default function Hero() {
   return (
     <section id="home" className={styles.section}>
+      <HeroShaderBackground />
       <div className={`${styles.floatShape} ${styles.floatShape1}`} />
       <div className={`${styles.floatShape} ${styles.floatShape2}`} />
 
