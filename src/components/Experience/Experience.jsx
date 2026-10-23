@@ -12,9 +12,9 @@ const WORK = [
     current: true,
     points: [
       'Build a full-stack AI-TA platform that delivers sub-2-second, RAG-grounded chat responses across 50+ course documents.',
-      'Automate Canvas LMS synchronization and grading workflows for 6+ courses through a dual-deployment CI/CD pipeline.',
-      'Develop Impact Connect, a role-based engagement platform connecting alumni and executive leaders with faculty and students across 5 user roles.',
-      'Collaborate on MatchIQ, a human-in-the-loop pipeline matching 68K+ alumni records through confidence-scored name, location, and degree matching.',
+      'Automated Canvas LMS synchronization and grading workflows for 6+ courses through a dual-deployment CI/CD pipeline.',
+      'Developed Impact Connect, a role-based engagement platform connecting alumni and executive leaders with faculty and students across 5 user roles.',
+      'Collaborated on MatchIQ, a human-in-the-loop pipeline matching 68K+ alumni records through confidence-scored name, location, and degree matching.',
     ],
     stack: ['Next.js 15', 'TypeScript', 'FastAPI', 'Qdrant', 'LlamaIndex', 'PostgreSQL', 'GitHub Actions'],
   },
