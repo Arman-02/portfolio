@@ -1,10 +1,10 @@
-import InteractiveShaderDemo from "./components/Demos/InteractiveShaderDemo"
-
 import { useEffect } from 'react'
 import { ThemeProvider } from './context/ThemeContext'
 import { PdfModalProvider } from './context/PdfModalContext'
+import { CaseStudyProvider } from './context/CaseStudyContext'
+import { initSmoothScroll, destroySmoothScroll, scrollToTarget } from './lib/smoothScroll'
 import ScrollProgress from './components/ScrollProgress/ScrollProgress'
-import Particles from './components/Particles/Particles'
+import Thread from './components/Thread/Thread'
 import Nav from './components/Nav/Nav'
 import Hero from './components/Hero/Hero'
 import About from './components/About/About'
@@ -18,28 +18,31 @@ import PdfModal from './components/PdfModal/PdfModal'
 
 function AppContent() {
   useEffect(() => {
+    initSmoothScroll()
+
     const handleClick = (e) => {
       const a = e.target.closest('a[href^="#"]')
       if (!a || a.getAttribute('href') === '#') return
-      const id = a.getAttribute('href').slice(1)
-      const el = document.getElementById(id)
+      const el = document.getElementById(a.getAttribute('href').slice(1))
       if (el) {
         e.preventDefault()
-        el.scrollIntoView({ behavior: 'smooth' })
+        scrollToTarget(el)
       }
     }
     document.addEventListener('click', handleClick)
-    return () => document.removeEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+      destroySmoothScroll()
+    }
   }, [])
 
   return (
     <>
       <ScrollProgress />
-      <Particles />
+      <Thread />
       <Nav />
       <main>
         <Hero />
-        
         <About />
         <Experience />
         <Projects />
@@ -57,7 +60,9 @@ export default function App() {
   return (
     <ThemeProvider>
       <PdfModalProvider>
-        <AppContent />
+        <CaseStudyProvider>
+          <AppContent />
+        </CaseStudyProvider>
       </PdfModalProvider>
     </ThemeProvider>
   )

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { usePdfModal } from '../../context/PdfModalContext'
+import { lockScroll } from '../../lib/smoothScroll'
 import styles from './PdfModal.module.css'
 
 const PDF_URL = '/Resume_Arman.pdf'
@@ -8,9 +9,9 @@ export default function PdfModal() {
   const { open, closeModal } = usePdfModal()
 
   useEffect(() => {
-    if (open) document.body.style.overflow = 'hidden'
-    else document.body.style.overflow = ''
-    return () => { document.body.style.overflow = '' }
+    if (!open) return
+    lockScroll(true)
+    return () => lockScroll(false)
   }, [open])
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function PdfModal() {
       aria-modal="true"
       aria-label="Resume PDF"
     >
-      <div className={styles.content}>
+      <div className={styles.content} data-lenis-prevent>
         <button type="button" className={styles.close} onClick={closeModal} aria-label="Close">
           ✕
         </button>

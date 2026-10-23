@@ -4,8 +4,8 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        <p className={styles.copyright}>© 2025 Arman Motiwala</p>
-        <p className={styles.tagline}>Built with passion for AI</p>
+        <p className={styles.copyright}>© {new Date().getFullYear()} Arman Motiwala</p>
+        <a href="#home" className={styles.tagline}>Back to top ↑</a>
       </div>
     </footer>
   )

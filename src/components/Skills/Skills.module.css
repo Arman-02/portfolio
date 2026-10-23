@@ -1,198 +1,131 @@
 .section {
-  padding: 10rem 2rem;
-  background: var(--section-alt);
-  overflow: hidden;
-  position: relative;
+  padding: var(--section-pad) 1.5rem;
 }
 
-.section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
-  opacity: 0.12;
-}
-
-[data-theme="light"] .section::before {
-  background-image:
-    linear-gradient(to right, rgba(15, 23, 42, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
-  opacity: 0.35;
+@media (min-width: 768px) {
+  .section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .inner {
   max-width: 72rem;
   margin: 0 auto;
-  position: relative;
 }
 
-.header {
-  margin-bottom: 4rem;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.25rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-@media (min-width: 768px) {
-  .title {
-    font-size: 3rem;
-  }
-}
-
-.subtitle {
-  margin: 1rem auto 0;
-  max-width: 40rem;
-  color: var(--text-muted-2);
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-
-.categoryTitle {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin: 0 0 1.75rem;
-  color: var(--text-primary);
-  text-align: center;
-}
-
-.categoryGrid {
+.top {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 2.25rem;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
 }
 
 @media (min-width: 900px) {
-  .categoryGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2.5rem;
+  .top {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 3rem;
   }
 }
 
-.categoryCard {
-  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
-  border: 1px solid var(--border-subtle);
-  border-radius: 18px;
-  padding: 2rem 1.5rem;
-  backdrop-filter: blur(10px);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.35s ease,
-    border-color 0.25s ease;
-}
-
-.categoryCard:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent-muted);
-  box-shadow: 0 22px 45px -18px rgba(255, 77, 77, 0.14);
-}
-
-.skillGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1.25rem 1rem;
-  align-items: start;
-}
-
-.skillItem {
-  display: flex;
-  flex-direction: column;
+.hint {
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
   gap: 0.6rem;
-  padding: 0.75rem 0.5rem;
-  border-radius: 14px;
-  border: 1px solid transparent;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.25s ease,
-    background 0.25s ease;
-  cursor: default;
-  text-align: center;
+  margin-top: -1.5rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted-3);
 }
 
-.skillItem:hover {
-  background: color-mix(in srgb, var(--bg-elevated-hover) 65%, transparent);
-  border-color: var(--border-default);
-  transform: translateY(-4px);
+.hintDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: hintPulse 2s ease-in-out infinite;
 }
 
-.skillIcon {
-  width: 56px;
-  height: 56px;
-  border-radius: 8px;
+@keyframes hintPulse {
+  50% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hintDot {
+    animation: none;
+  }
+}
+
+.groups {
+  border-top: 1px solid var(--border-strong);
+}
+
+.group {
+  display: grid;
+  gap: 1rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+@media (min-width: 768px) {
+  .group {
+    grid-template-columns: 13rem minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+.groupTitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding-top: 0.45rem;
+}
+
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  border: 1px solid var(--border-subtle);
-  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
-  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.35);
-}
-
-.skillIcon svg {
-  width: 32px;
-  height: 32px;
-  display: block;
-  /* keep icons crisp */
-  shape-rendering: geometricPrecision;
-}
-
-.skillIcon svg * {
-  vector-effect: non-scaling-stroke;
-}
-
-.skillIconDot {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  background: currentColor;
-  opacity: 0.5;
-}
-
-/* Label under icon */
-.skillItem > span {
-  font-size: 0.9rem;
+  gap: 0.55rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
   color: var(--text-muted);
-  line-height: 1.2;
+  font-size: 0.875rem;
+  transition: border-color 0.3s, color 0.3s;
 }
 
-/* Stagger children when Reveal is visible (data-visible from Reveal component) */
-[data-visible="true"] .skillItem {
-  opacity: 0;
-  animation: skillItemPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
 }
 
-[data-visible="true"] .skillItem:nth-child(1) { animation-delay: 0.1s; }
-[data-visible="true"] .skillItem:nth-child(2) { animation-delay: 0.15s; }
-[data-visible="true"] .skillItem:nth-child(3) { animation-delay: 0.2s; }
-[data-visible="true"] .skillItem:nth-child(4) { animation-delay: 0.25s; }
-[data-visible="true"] .skillItem:nth-child(5) { animation-delay: 0.3s; }
-[data-visible="true"] .skillItem:nth-child(6) { animation-delay: 0.35s; }
-[data-visible="true"] .skillItem:nth-child(7) { animation-delay: 0.4s; }
-[data-visible="true"] .skillItem:nth-child(8) { animation-delay: 0.45s; }
-
-@keyframes skillFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--text-muted-3);
+  transition: color 0.3s;
 }
 
-@keyframes skillItemPop {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+.chip:hover .icon {
+  color: var(--accent);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
 }

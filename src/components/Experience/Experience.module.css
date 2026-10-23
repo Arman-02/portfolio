@@ -1,5 +1,12 @@
 .section {
-  padding: 10rem 2rem;
+  padding: var(--section-pad) 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .inner {
@@ -7,38 +14,14 @@
   margin: 0 auto;
 }
 
-.header {
-  margin-bottom: 5rem;
-}
-
-.label {
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  display: block;
-}
-
-.title {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.25rem;
-  font-weight: 700;
-}
-
-@media (min-width: 768px) {
-  .title {
-    font-size: 3rem;
-  }
-}
-
 .tabsPill {
   position: relative;
   display: inline-flex;
-  background: var(--bg-elevated);
+  background: var(--surface);
+  border: 1px solid var(--border-default);
   padding: 4px;
   border-radius: 9999px;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .tabBtn {
@@ -59,7 +42,7 @@
 }
 
 .tabBtn.active {
-  color: var(--text-primary);
+  color: #fff;
 }
 
 .tabPill {
@@ -88,38 +71,92 @@
   opacity: 0;
 }
 
-.expCard {
+.timeline {
   position: relative;
-  padding-left: 1.5rem;
-  border-left: 1px solid var(--border-default);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-left: 2rem;
 }
 
-.expCard::before {
+.points {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 50rem;
+  color: var(--text-muted-2);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.points li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.points li::before {
   content: '';
   position: absolute;
-  left: -4px;
-  top: 0;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 1px;
   background: var(--accent);
 }
 
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.stackItem {
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted-2);
+  background: var(--surface);
+}
+
+.trackLine,
+.trackFill {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+}
+
+.trackLine {
+  background: var(--border-default);
+}
+
+.trackFill {
+  background: var(--accent);
+  transform-origin: top;
+}
+
+.expCard {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .expCard:hover {
-  border-left-color: var(--accent-muted);
   transform: translateX(4px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.expCard + .expCard {
-  margin-top: 2rem;
-}
-
-@media (min-width: 768px) {
-  .expRow + .expRow {
-    margin-top: 4rem;
-  }
+.dot {
+  position: absolute;
+  left: -2rem;
+  top: 0.45rem;
+  width: 9px;
+  height: 9px;
+  transform: translateX(-4px);
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
 }
 
 .cardHeader {
@@ -149,25 +186,63 @@
 }
 
 .cardDate {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   font-size: 0.75rem;
   color: var(--text-muted-4);
   letter-spacing: 0.05em;
 }
 
-.cardDesc {
-  color: var(--text-muted-2);
-  font-size: 0.875rem;
-  line-height: 1.6;
-  max-width: 42rem;
+.currentBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.pulseDot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.pulseDot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.55;
+  animation: pulseRing 1.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.6); opacity: 0.55; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulseDot::after {
+    animation: none;
+    opacity: 0;
+  }
 }
 
 .spaceY {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.75rem;
+  position: relative;
 }
 
 .spaceYLarge {
-  gap: 4rem;
+  gap: 3.5rem;
 }
 

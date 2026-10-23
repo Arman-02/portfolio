@@ -5,40 +5,7 @@
   justify-content: center;
   padding: 0 2rem;
   position: relative;
-  background: radial-gradient(ellipse at 50% 0%, var(--hero-gradient-1) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, var(--hero-gradient-2) 0%, transparent 40%),
-    var(--bg-primary);
   overflow: hidden;
-}
-
-.floatShape {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  animation: float 8s ease-in-out infinite;
-  z-index: 1;
-}
-
-.floatShape1 {
-  width: 24rem;
-  height: 24rem;
-  background: rgba(239, 68, 68, 0.1);
-  top: 5rem;
-  right: 5rem;
-}
-
-.floatShape2 {
-  width: 16rem;
-  height: 16rem;
-  background: rgba(59, 130, 246, 0.05);
-  bottom: 10rem;
-  left: 5rem;
-  animation-delay: -4s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
 }
 
 .wrapper {
@@ -84,27 +51,85 @@
   margin-bottom: 2rem;
   font-size: clamp(3rem, 12vw, 8rem);
   line-height: 0.95;
-  opacity: 0;
-  animation: fadeUp 1s ease-out 0.1s forwards;
+}
+
+.lineMask {
+  display: block;
+  overflow: hidden;
+}
+
+.lineInner {
+  display: block;
 }
 
 .subtitle {
   font-size: 1.125rem;
-  color: var(--text-muted-2);
+  color: var(--text-muted);
   max-width: 36rem;
-  margin: 0 auto 4rem;
+  margin: 0 auto 3rem;
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
+  /* keeps the copy legible where the ribbon passes behind it */
+  text-shadow: 0 0 18px var(--bg-primary), 0 0 6px var(--bg-primary);
   opacity: 0;
-  animation: fadeUp 1s ease-out 0.2s forwards;
+  animation: fadeUp 1s ease-out 1.4s forwards;
+}
+
+.ctas {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 1s ease-out 1.5s forwards;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: 3.25rem;
+  padding: 0 1.75rem;
+  border-radius: 999px;
+  font: 500 0.9375rem 'Space Grotesk', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.ctaPrimary {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
+}
+
+.ctaPrimary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 16px 32px -12px rgba(255, 77, 77, 0.55);
+}
+
+.ctaSecondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(8px);
+}
+
+.ctaSecondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .socials {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   opacity: 0;
-  animation: fadeUp 1s ease-out 0.3s forwards;
+  animation: fadeUp 1s ease-out 1.6s forwards;
 }
 
 .socialLink {
@@ -116,14 +141,14 @@
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--bg-secondary);
+  transition: border-color 0.3s, background 0.3s, color 0.3s;
 }
 
 .socialLink:hover {
-  border-color: var(--accent-muted);
-  background: var(--accent-muted-2);
-  transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 12px 24px -8px rgba(255, 77, 77, 0.25);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
 }
 
 .scrollCta {
@@ -142,7 +167,7 @@
   text-transform: uppercase;
   transition: color 0.2s;
   opacity: 0;
-  animation: fadeUp 1s ease-out 0.4s forwards;
+  animation: fadeUp 1s ease-out 1.7s forwards;
 }
 
 .scrollCta:hover {
@@ -173,4 +198,19 @@
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(0.25rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bounce {
+    animation: none;
+  }
+
+  .badgeRow,
+  .subtitle,
+  .ctas,
+  .socials,
+  .scrollCta {
+    animation: none;
+    opacity: 1;
+  }
 }

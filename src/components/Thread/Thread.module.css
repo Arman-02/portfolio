@@ -1,0 +1,23 @@
+.thread {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow,
+.core {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.glow {
+  filter: blur(18px);
+}
+
+[data-theme="light"] .glow {
+  mix-blend-mode: multiply;
+}

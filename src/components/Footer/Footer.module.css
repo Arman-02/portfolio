@@ -26,5 +26,11 @@
 
 .tagline {
   font-size: 0.75rem;
-  color: var(--text-muted-4);
+  color: var(--text-muted-3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.tagline:hover {
+  color: var(--accent);
 }
